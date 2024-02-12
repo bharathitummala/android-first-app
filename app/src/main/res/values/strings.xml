@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AndroidTutorial</string>
+    <string name="welcome_txt">Hello Android!!!</string>
+    <string name="type_your_name_here">Type your name here</string>
+    <string name="name_value" />
+    <string name="btn_submit">Submit</string>
+</resources>
