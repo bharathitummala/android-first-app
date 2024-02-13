@@ -1,15 +1,14 @@
 package com.example.androidtutorial
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.androidtutorial.ui.theme.AndroidTutorialTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,13 +17,26 @@ class MainActivity : ComponentActivity() {
         val greetingTextView = findViewById<TextView>(R.id.welcome_txt)
         val inputField = findViewById<EditText>(R.id.enter_txt)
         val submitButtonView = findViewById<Button>(R.id.submit_btn)
-       submitButtonView.setOnClickListener{
-           val enteredName = inputField.text.toString()
-           val message = "Hello $enteredName!!!"
-           greetingTextView.text = message
-           inputField.text.clear()
+        val viewOfferBtnView = findViewById<Button>(R.id.btnoffers)
+        var enteredName = ""
+       submitButtonView.setOnClickListener {
+           enteredName = inputField.text.toString()
+           if (enteredName == "") {
+               viewOfferBtnView.visibility = INVISIBLE
+               greetingTextView.text = ""
+               Toast.makeText(this@MainActivity, "Please enter name!", Toast.LENGTH_SHORT).show()
+           } else {
+               val message = "Hello $enteredName!!!"
+               greetingTextView.text = message
+               inputField.text.clear()
+               viewOfferBtnView.visibility = VISIBLE
 
+           }
        }
-
+           viewOfferBtnView.setOnClickListener{
+               val intent = Intent(this,SecondActivity::class.java)
+               intent.putExtra("USER",enteredName)
+               startActivity(intent)
+           }
+       }
     }
-}

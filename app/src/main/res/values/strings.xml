@@ -4,4 +4,6 @@
     <string name="type_your_name_here">Type your name here</string>
     <string name="name_value" />
     <string name="btn_submit">Submit</string>
+    <string name="view_offers">VIEW OFFERS</string>
+    <string name="tv_offer">TV OFFERS</string>
 </resources>
