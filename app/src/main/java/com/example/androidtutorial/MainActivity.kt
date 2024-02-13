@@ -2,6 +2,7 @@ package com.example.androidtutorial
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.Button
@@ -14,6 +15,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.i("MYTAG", "MainActivity: onCreate")
         val greetingTextView = findViewById<TextView>(R.id.welcome_txt)
         val inputField = findViewById<EditText>(R.id.enter_txt)
         val submitButtonView = findViewById<Button>(R.id.submit_btn)
@@ -39,4 +41,34 @@ class MainActivity : ComponentActivity() {
                startActivity(intent)
            }
        }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("MYTAG", "MainActivity: onStart")
     }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("MYTAG","MainActivity : OnResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("MYTAG","MainActivity : OnPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("MYTAG","MainActivity : OnStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("MYTAG","MainActivity : OnDestroy")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.i("MYTAG","MainActivity : OnRestart")
+    }
+}
